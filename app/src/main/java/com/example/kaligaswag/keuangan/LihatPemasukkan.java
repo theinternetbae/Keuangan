@@ -25,7 +25,7 @@ public class LihatPemasukkan extends AppCompatActivity {
 
         setTitle("Pengeluaranku");
 
-        avgPengeluaran = findViewById(R.id.textViewAVGPengeluaran);
+        avgPengeluaran = findViewById(R.id.textViewAVGPemasukkan);
         sumPengeluaran = findViewById(R.id.textViewSUMPengeluaran);
 
         helper = new DBHelper(this);

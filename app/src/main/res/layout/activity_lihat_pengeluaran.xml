@@ -16,4 +16,59 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="8dp" />
 
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Rata-rata pemasukkan anda"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:typeface="sans"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerviewPemasukkan"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textViewAVGPemasukkan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        android:typeface="sans"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Total pemasukkan anda"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:typeface="sans"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAVGPemasukkan"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textViewSUMPemasukkan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:ignore="HardcodedText" />
+
 </android.support.constraint.ConstraintLayout>

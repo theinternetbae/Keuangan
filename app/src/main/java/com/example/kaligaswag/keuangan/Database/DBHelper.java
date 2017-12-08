@@ -95,4 +95,16 @@ public class DBHelper extends SQLiteOpenHelper {
         return db.rawQuery(query, null);
     }
 
+    public Cursor getAVGPemasukkan(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT AVG(harga) AS myAVG FROM pemasukkan";
+        return db.rawQuery(query, null);
+    }
+
+    public Cursor getSUMPemasukkan(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT SUM(harga) AS mySUM FROM pemasukkan";
+        return db.rawQuery(query, null);
+    }
+
 }

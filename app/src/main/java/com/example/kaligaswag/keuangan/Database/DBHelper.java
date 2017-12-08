@@ -18,12 +18,15 @@ public class DBHelper extends SQLiteOpenHelper {
     private static String COL_1 = "id";
     private static String COL_2 = "judul";
     private static String COL_3 = "harga";
+    private static String SALDO = "saldo";
     private static String TIMESTAMP = "timestamp";
     private static int DATABASE_VERSION = 1;
     private static String CREATE_TB_PEMASUKKAN = "create table pemasukkan(id INTEGER PRIMARY KEY AUTOINCREMENT, judul TEXT NOT NULL, " +
             "harga INTEGER NOT NULL, timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP);";
     private static String CREATE_TB_PENGELUARAN = "create table pengeluaran(id INTEGER PRIMARY KEY AUTOINCREMENT, judul TEXT NOT NULL, " +
             "harga INTEGER NOT NULL, timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP);";
+    private static String CREATE_TB_SALDO = "create table mysaldo(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            "saldo INTEGER, timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP);";
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -33,12 +36,14 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TB_PEMASUKKAN);
         db.execSQL(CREATE_TB_PENGELUARAN);
+        db.execSQL(CREATE_TB_SALDO);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_PEMASUKKAN);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_PENGELUARAN);
+        db.execSQL("DROP TABLE IF EXISTS mysaldo");
         onCreate(db);
     }
 
@@ -48,6 +53,13 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put(COL_2, judul);
         cv.put(COL_3, jumlah);
         db.insert(tableName, null, cv);
+    }
+
+    public void addSaldo(int saldo){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(SALDO, saldo);
+        db.insert("mysaldo", null, cv);
     }
 
     public Cursor getAllPemasukkan(String tableName){
@@ -105,6 +117,17 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT SUM(harga) AS mySUM FROM pemasukkan";
         return db.rawQuery(query, null);
+    }
+
+    public Cursor getAllSaldo(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.query("mysaldo",
+                null,
+                null,
+                null,
+                null,
+                null,
+                TIMESTAMP + " ASC");
     }
 
 }
